@@ -1,47 +1,27 @@
 #include "main.h"
-int _root_sqrt(int x, int y);
 
-/**
- * _sqrt_recursion - function that returns the natural square root of a number
- *@n: first value
+/*
+ *look_root - finds the square root of a given number
  *
- * Return: the final solution
- */
-int _sqrt_recursion(int n)
+ *Return: the final value
+ *
+ */int look_root(int n, int root)
 {
-	if (n == 0)
-	{
-		return (0);
-	}
-	if (n < 0)
-	{
+	if (root * root > n)
 		return (-1);
-	}
-	else
-	{
-		return (_root_sqrt(n, 1));
-	}
+
+	if (root * root == n)
+		return (root);
+
+	return (look_root(n, root + 1));
 }
 
-/**
- * _root_sqrt - calculate the square root
- *@x: value to calculate  the square root
- *@y: variable to cont
- *
- * Return: the number with the solution
- */
-int _root_sqrt(int x, int y)
+/*
+ * _sqrt_recursion - returns the natural square root of a number
+ * Return: int
+ */int _sqrt_recursion(int n)
 {
-	if (x * x == y)
-	{
-		return (y);
-	}
-	else if (x * x > y)
-	{
-	return (-1);
-	}
-	else
-	{
-		return (_root_sqrt(x, y + 1));
-	}
+	if (n < 0)
+		return (-1);
+	return (look_root(n, 0));
 }
